@@ -72,33 +72,17 @@ if st.button("Predict Cluster"):
 # Visualization
 # ===========================
 
+# Visualization
+
 st.subheader("📊 K-Means Clustering Visualization")
 
-fig, ax = plt.subplots(figsize=(8,6))
+fig, ax = plt.subplots()
 
-# Plot data points
-scatter = ax.scatter(
-    df['Age'],
-    df['Income($)'],
-    c=df['Cluster'],
-    cmap='viridis',
-    s=80
-)
-
-# Plot cluster centers
-ax.scatter(
-    model.cluster_centers_[:,0],
-    model.cluster_centers_[:,1],
-    color='red',
-    marker='*',
-    s=300,
-    label='Centroids'
-)
+ax.scatter(df['Age'], df['Income($)'], c=df['Cluster'])
 
 ax.set_xlabel("Age")
 ax.set_ylabel("Income ($)")
-ax.set_title("Customer Segmentation using K-Means")
-ax.legend()
+ax.set_title("K-Means Clustering")
 
 st.pyplot(fig)
 
